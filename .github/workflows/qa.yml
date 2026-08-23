@@ -1,0 +1,38 @@
+name: Elevation Media QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start static site
+        run: |
+          npx -y serve@14.2.4 . -l 4173 > /tmp/elevation-media.log 2>&1 &
+          for i in {1..30}; do
+            curl -fsS http://127.0.0.1:4173/ >/dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/elevation-media.log
+          exit 1
+      - name: Run responsive browser QA
+        run: node scripts/qa.mjs
+      - name: Upload QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: elevation-media-qa-screenshots
+          path: qa-screenshots
+          retention-days: 7
