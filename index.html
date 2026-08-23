@@ -6,14 +6,14 @@
   <meta name="theme-color" content="#080808" />
   <title>Elevation Media — The Venue Advertising Network</title>
   <meta name="description" content="Elevation Media connects advertisers with customers inside real venues through tap-to-Wi-Fi NFC media and fully managed QR Coaster campaigns." />
+  <link rel="preload" href="assets/elevation-media-logo.svg" as="image" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="shell nav-shell">
       <a class="wordmark" href="#top" aria-label="Elevation Media home">
-        <span>ELEV<span class="gold">A</span>TION</span>
-        <small>MEDIA</small>
+        <img src="assets/elevation-media-logo.svg" alt="Elevation Media" style="display:block;width:clamp(132px,17vw,190px);height:auto" />
       </a>
       <nav aria-label="Primary navigation">
         <a href="#products">Products</a>
@@ -58,7 +58,7 @@
           <div class="nfc-card">
             <div class="nfc-title">TAP FOR<br>FREE WI-FI</div>
             <div class="wifi-mark"><span></span><span></span><span></span></div>
-            <div class="nfc-logo">ELEVATION<small>MEDIA</small></div>
+            <div class="nfc-logo"><img src="assets/elevation-media-logo.svg" alt="Elevation Media" style="display:block;width:92px;max-width:100%;height:auto;margin:0 auto" /></div>
             <div class="tap-label">TAP PHONE HERE</div>
             <div class="tap-impact">EACH TAP SUPPORTS<br>CANCER RESEARCH</div>
           </div>
@@ -243,7 +243,9 @@
 
   <footer>
     <div class="shell footer-row">
-      <div class="wordmark footer-brand"><span>ELEV<span class="gold">A</span>TION</span><small>MEDIA</small></div>
+      <a class="wordmark footer-brand" href="#top" aria-label="Elevation Media home">
+        <img src="assets/elevation-media-logo.svg" alt="Elevation Media" style="display:block;width:172px;max-width:100%;height:auto" />
+      </a>
       <p>Real venues. Real attention. Measurable results.</p>
     </div>
   </footer>
